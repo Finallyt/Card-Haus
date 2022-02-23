@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: 1512px;
 }
 
 .App-logo {
@@ -36,3 +37,273 @@
     transform: rotate(360deg);
   }
 }
+
+.Vector1{
+  position: absolute;
+  width: 51.1%;
+  height: 1349px;
+  left: 0px;
+  top: 0px;
+  background: (229.92deg, #7376D0 11.48%, rgba(171, 151, 228, 0.7) 35.29%, rgba(229, 174, 231, 0.267442) 57.96%, rgba(214, 215, 231, 0) 84.04%);
+
+}
+
+.Vector2{
+  
+  position: absolute;
+  width: 45.6%;
+  height: 1999.69px;
+  right: 0px;
+  top: 706px;
+  
+
+
+}
+
+
+.SendContainer{
+  left: 52.91%;
+  top: 800px;
+ 
+}
+
+.HeroMessage{
+  text-align: left !important;
+  margin: 0;
+  position: absolute;
+width: max-content;
+height: 294px;
+left: 53.37%;
+top: 301px;
+
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: 800;
+font-size: 84px;
+line-height: 98px;
+
+color: #000000;
+
+}
+
+.myCard{
+  position: absolute;
+width: 545.46px;
+height: 321.79px;
+left: 11.44%;
+top: 287px;
+transform: skewX(-6deg);
+background: #FEFEFE;
+box-shadow: 4px 4px 20px rgba(37, 38, 44, 0.15);
+border-radius: 17px;
+}
+
+.serviceName{
+  position: absolute;
+width: 165px;
+height: 42px;
+left: 8%;
+top: 86px;
+
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: 800;
+font-size: 36px;
+line-height: 42px;
+color:black;
+}
+
+.MiniMessage{
+  position: relative;
+width: 373px;
+height: 51px;
+left: 53.5%;
+top: 661px;
+margin: 0;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 23px;
+
+color: #7E7C8C;
+
+}
+
+.MyPocket{
+  
+
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 114px;
+height: 68px;
+left: 45.9%;
+top: 878px;
+}
+
+.cardList{
+  position: absolute;
+width: 84.12%;
+height: 1505px;
+left: 8%;
+top: 1180px;
+
+}
+
+.CardNumber{  
+  
+width: max-content;
+height: 56px;
+left: 15.7%;
+
+position:relative;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 48px;
+line-height: 56px;
+
+}
+
+.Rectangle{
+  position: absolute;
+  width: 45%;
+height: 50px;
+left: 27%;
+top:1006px;
+background: #C4C4C4;
+opacity: 0.5;
+}
+
+.Line{
+  width: 1272px;
+  opacity: 0.2;
+  border: 1px solid #000000;
+}
+
+.DateSort{
+left: 15.7%;
+position:relative;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 28px;
+width:max-content;
+color: #000000;
+padding-top: 24px;;
+
+opacity: 0.4;
+}
+
+.DateSort1{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px !important;
+  line-height: 28px;
+  opacity: 0.4;
+  margin-top: 32px;
+  left:0px;
+  position: relative;
+  width:max-content;  
+}
+  
+
+
+.container2{
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  flex-wrap: wrap;
+ 
+  position: absolute;
+}
+
+.box{
+  width: 333px;
+height: 195px;
+background: #FEFEFE;
+box-shadow: 4px 4px 20px rgba(36, 37, 44, 0.15);
+border-radius: 8px;
+background-clip:border-box;
+cursor:pointer;
+margin-right: 20px;
+margin-bottom: 0;
+position:relative;
+margin-left: 0;
+}
+
+.box1{
+  width: 333px;
+  height: 195px;
+  background: #FEFEFE;
+  box-shadow: 4px 4px 20px rgba(36, 37, 44, 0.15);
+  border-radius: 8px;
+  margin-bottom: 28px;;
+
+}
+
+.Owners{
+  position: absolute;
+width: max-content;
+height: 56px;
+left: 15%;
+top: 313px;
+
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 48px;
+line-height: 56px;
+
+color: #000000;
+
+}
+
+.OwnerList{
+
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 665px;
+height: 864px;
+left: 15%;
+top: 475px;
+
+}
+
+.OwnerProfile{
+  display: flex;
+}
+
+.OwnerName{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 42px;
+width:max-content;
+height: max-content;
+margin-left: 36px;
+margin-top: 0;
+}
+
+.OwnerName1{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 24px;
+line-height: 28px;
+position: relative;
+margin:0%;
+
+}
+
