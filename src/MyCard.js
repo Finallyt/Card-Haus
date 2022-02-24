@@ -8,13 +8,22 @@ import Modal from './Modal';
 import { BrowserRouter,Router,Routes,Route } from 'react-router-dom';
 import ModalFrame from './MyCardModalFrame';
 import CardInput from './CardInput.css'
+import { getKeplrFromWindow } from "@keplr-wallet/stores";
+import { chainInfo } from "./config/chain"
 import axios from 'axios';
-
+import { useEffect } from 'react';
+import {
+  makeSignDoc,
+  makeStdTx,
+} from "@cosmjs/launchpad";
 
 export default function MyCard(){
 
+  const [keplr, setKeplr] = useState(null);
+  const [bech32Address, setBech32Address] = useState("");
+  const KeyAccountAutoConnect = "account_auto_connect";
     const [modalOpen, setModalOpen] = useState(false);
-    const [bech32Address, setBech32Address] = useState("");
+   
 
     const [data, setData] = useState(null);
 
@@ -25,17 +34,102 @@ export default function MyCard(){
     setModalOpen(false);
   };
 
-  const getData = () => {
-    axios.get("/mattverse/cardhaus/namecard/card_info")
-    .then((response) => {
-      setData(response.data);
-    });
+ 
+
+
+  const connectWallet = async () => {
+    try {
+      const newKeplr = await getKeplrFromWindow();
+
+      if (!newKeplr) {
+        throw new Error("Keplr extension not found");
+      }
+
+      await newKeplr.experimentalSuggestChain(chainInfo);
+      await newKeplr.enable(chainInfo.chainId);
+
+      localStorage.setItem(KeyAccountAutoConnect, "true");
+      setKeplr(newKeplr);
+    } catch (e) {
+      alert(e);
+    }
+  };
+
+  useEffect(() => {
+    const shouldAutoConnectAccount =
+      localStorage?.getItem(KeyAccountAutoConnect) != null;
+    const loadAccountInfo = async () => {
+      if (keplr != null) {
+        const key = await keplr.getKey(chainInfo.chainId);
+        setBech32Address(key.bech32Address);
+      }
+    };
+
+    if (shouldAutoConnectAccount) {
+      connectWallet();
+    }
+
+    loadAccountInfo();
+  }, [keplr]);
+
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+   
+    
+    const aminoMsgs = [
+      {
+        type: "errata/audit/MsgRegisterProtocol",
+        value: {
+          sender: bech32Address,
+          title: e.target['title'].value,
+          description: e.target['description'].value,
+          source_code:  e.target['sourceUrl'].value,
+          project_home: e.target['projectUrl'].value,
+          category: e.target['category'].value,
+        },
+      },
+    ];
+    const fee = {
+      gas: "200000",
+      amount: [
+        {
+          amount: "0",
+          denom: "uert",
+        },
+      ],
+    };
+
+    const signDoc = makeSignDoc(
+      aminoMsgs,
+      fee,
+      chainInfo.chainId,
+      ""
+    );
+
+    try {
+      const signResponse = await keplr.signAmino(
+        chainInfo.chainId,
+        bech32Address,
+        signDoc,
+        undefined
+      );
+      const signedTx = makeStdTx(signResponse.signed, signResponse.signature);
+      await keplr.sendTx(
+        chainInfo.chainId,
+        signedTx,
+        "async"
+      );
+    }
+    catch {
+    }
   }
 
-  const postData = async (Cards) => {
-    return await axios("/mattverse/cardhaus/namecard/card_info", Cards)
-}
-  
+
+
+
+
+
 
   const [name, setName] = useState("")
   const [engName, setEngName] = useState("");
@@ -74,21 +168,20 @@ export default function MyCard(){
       <ModalFrame open={modalOpen} close={closeModal} header="Modal heading">
         <div className="AllInput">
         <p className="MyInfo">이름</p>
-        <div><input class="CardInput"name="name" type="text" placeholder="이름" value={name} onChange={onNameHandler} /></div>
+        <div><input class="CardInput"name="name" type="text"  value={name} onChange={onNameHandler} /></div>
         <p className="MyInfo">영어이름</p>
-          <div><input name="engName" class="CardInput"type="text" placeholder="영어이름" value={engName} onChange={onEngNameHandler} /></div> <p className="MyInfo">소속</p>
-          <div><input name="company"class="CardInput" type="text" placeholder="소속" value={company} onChange={onCompanyHandler} /></div>
-          <p className="MyInfo">이메일</p>
-          <div><input name="email" class="CardInput"type="email" value={email} onChange={onEmailHandler} /></div>
-     
-          <div><button type="submit" onSubmit={onSubmit} class="loginregister__button">명함 생성하기</button></div>
+          <div><input name="engName" class="CardInput"type="text"  value={engName} onChange={onEngNameHandler} /></div> <p className="MyInfo">소속</p>
+          <div><input name="company"class="CardInput" type="text"  value={company} onChange={onCompanyHandler} /></div>
+         
+    
+          <div><button type="submit" onSubmit={onSubmit} className="logbutton">명함 생성하기</button></div>
           
         </div>
         <div className="MyCardis">
         <div><input name="name" className="CardInput_Name"type="text"  value={name} onChange={onNameHandler} /></div>
         <div><input name="engName" className="CardInput_EngName"type="text" value={engName} onChange={onEngNameHandler} /></div>
           <div><input name="company" className="CardInput_Company"type="text" value={company} onChange={onCompanyHandler} /></div>
-          <div><input name="email" className="CardInput_email"type="email"  value={email} onChange={onEmailHandler} /></div>
+         
          
          </div>
          

@@ -8,20 +8,27 @@ const Modal = (props) => {
       <div className={open ? 'openModal modal' : 'modal'}>
         {open ? (
           <section>
-            <header>
-              {header}
-              <button className="close" onClick={close}>
-                {' '}
-                &times;{' '}
-              </button>
-            </header>
+           
+            <p className="getCardt">{header}</p> 
+              
+            
             <main>{props.children}</main>
-            <footer>
-              <button className="close" onClick={close}>
-                {' '}
-                close{' '}
+           
+            <button  onClick={close}>
+            <div className="closebox"></div>
               </button>
-            </footer>
+              <button  onClick={close}>
+            <div className="closebox1"></div>
+              </button>
+              <button  onClick={close}>
+            <div className="closebox2"></div>
+              </button>
+              <button  onClick={close}>
+            <div className="closebox3"></div>
+              </button>
+              <button  onClick={close}>
+                    <p className="closeX">X</p>
+              </button>
           </section>
         ) : null}
       </div>

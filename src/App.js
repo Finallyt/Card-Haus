@@ -13,9 +13,13 @@ import "./index.css";
 import { useEffect } from "react";
 import CardDetail from "./CardDetail";
 import { useState } from "react";
+import ScrollToTop from "./Scrolltotop";
 import { getKeplrFromWindow } from "@keplr-wallet/stores";
 import { chainInfo } from "./config/chain"
-
+import {
+  makeSignDoc,
+  makeStdTx,
+} from "@cosmjs/launchpad";
 
 
 
@@ -63,20 +67,22 @@ export default function App(){
 
       }, [keplr]);
  
-
-
+    
 return(
-<div className="App">
+<div >
+<div className="back"></div>
 <div className="header">
-<BrowserRouter>
+<BrowserRouter  onUpdate={() => window.scrollTo(0, 0)} >
 <Routes>
-<Route path="/Home" element={<Home/>}>
+<Route path="/" element={<Home/>}>
 
 </Route>
 <Route path="/Owner" element={<Owner/>}/> 
+
 <Route path="/CardCard/:cardID" element={<CardDetail/>}></Route>
+
 </Routes>
-<Link to="/Home"><div className="serviceName">CARDAUS</div></Link>
+<Link to="/"><div className="serviceName">CARDAUS</div></Link>
 <Link to="/Owner"  style={{ textDecoration: 'none' }}><p className="headerInfo3">내 명함을 가진 사람들은?</p></Link>
 
 </BrowserRouter>
@@ -100,7 +106,7 @@ return(
               Connected as <code>{bech32Address}</code>
             </span>
           ) : (
-            <button  onClick={connectWallet}>
+            <button  onClick={connectWallet} className="connectWallet">
               Connect Wallet
             </button>
           )}

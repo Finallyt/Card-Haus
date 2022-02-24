@@ -4,7 +4,7 @@ import "./index.css";
 const numbers = [...Array(10).keys()];
 
 class RandomNum extends React.Component{
-    state = { number: [0, 0, 0, 0, 0, 0, 0] };
+    state = { number: [0, 0, 0, 0, 0, 0, 0, 0] };
     randomize = () => {
         if (!this.state.effect) {
             const numberCopy = numbers.map((x) => x);
@@ -26,7 +26,7 @@ class RandomNum extends React.Component{
     render() {
         return (
             <React.Fragment>
-                <h1 id="title">명함 코드번호</h1>
+                <h1 id="title"></h1>
                 <div id="numbers" className="numbers">
                     <LotteryItem
                         index="0"
@@ -64,6 +64,7 @@ class RandomNum extends React.Component{
                         number={this.state.number[5]}
                         decrypting={this.state.effect}
                     />
+                
                   
                 </div>
                 <div>
@@ -96,7 +97,7 @@ class LotteryItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            number: "*",
+            number: <div className="RandomBox"></div>,
             decryptingDone: "",
         };
     }
@@ -133,7 +134,7 @@ class LotteryItem extends React.Component {
             <div
                 className={`ball ${this.props.color} ${this.state.decryptingDone}`}
             >
-                {this.state.number}
+              <div className="RandomBox"> {this.state.number}</div> 
             </div>
         );
     }

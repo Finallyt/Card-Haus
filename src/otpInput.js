@@ -51,11 +51,12 @@ class OtpInput extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div className="otpContainer">
         <section>
+          <div className="numbers">
           <input
             name="otp1"
             type="text"
             autoComplete="off"
-            className="otpInput"
+            className="RandomBox"
             value={this.state.otp1}
             onKeyPress={this.keyPressed}
             onChange={e => this.handleChange("otp1", e)}
@@ -66,7 +67,7 @@ class OtpInput extends React.Component {
             name="otp2"
             type="text"
             autoComplete="off"
-            className="otpInput"
+            className="RandomBox"
             value={this.state.otp2}
             onChange={e => this.handleChange("otp2", e)}
             tabIndex="2" maxLength="1" onKeyUp={e => this.inputfocus(e)}
@@ -76,7 +77,7 @@ class OtpInput extends React.Component {
             name="otp3"
             type="text"
             autoComplete="off"
-            className="otpInput"
+            className="RandomBox"
             value={this.state.otp3}
             onChange={e => this.handleChange("otp3", e)}
             tabIndex="3" maxLength="1" onKeyUp={e => this.inputfocus(e)}
@@ -86,25 +87,37 @@ class OtpInput extends React.Component {
             name="otp4"
             type="text"
             autoComplete="off"
-            className="otpInput"
+            className="RandomBox"
             value={this.state.otp4}
             onChange={e => this.handleChange("otp4", e)}
             tabIndex="4" maxLength="1" onKeyUp={e => this.inputfocus(e)}
           />
 
+         
           <input
             name="otp5"
             type="text"
             autoComplete="off"
-            className="otpInput"
+            className="RandomBox"
             value={this.state.otp5}
             onChange={e => this.handleChange("otp5", e)}
             tabIndex="5" maxLength="1" onKeyUp={e => this.inputfocus(e)}
           />
+             
+             <input
+            name="otp6"
+            type="text"
+            autoComplete="off"
+            className="RandomBox"
+            value={this.state.otp5}
+            onChange={e => this.handleChange("otp6", e)}
+            tabIndex="6" maxLength="1" onKeyUp={e => this.inputfocus(e)}
+          />
+          </div>
           </section>
         </div>
-            <hr/>
-        <button className="receiveCode" type="submit">
+           
+        <button className="generate" type="submit">
           입력
         </button>
       </form>

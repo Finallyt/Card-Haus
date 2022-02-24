@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { chainInfo } from "./config/chain";
-
+import App from './App.css'
+import ScrollToTop from "./Scrolltotop";
 
 export default function CardList(){
 
@@ -33,7 +34,7 @@ export default function CardList(){
 
 <div>
 <div className="cardList">
-<p className="CardNumber">I have { dummy.cards.length } Business Cards</p>
+<p className="CardNumber">I have { dummy.cards.length } Cards</p>
              
     
   <div className="DateSort">    <td>{moment(post.date).format('YYYY-MM-DD')}</td></div>
@@ -46,7 +47,8 @@ export default function CardList(){
                 {
                   dummy.cards.map((cards,index) => {
                     return (
-                        <Link to={`/CardCard/${cards.id}`}>
+                      
+                        <Link to={`/CardCard/${cards.id}`} className="nodeco">
                       <div key={index}>
                         
 
@@ -56,13 +58,14 @@ export default function CardList(){
                         </p>
                       </div>
                       </Link>
+                      
                     )
                   }) 
                 }
              
 
                 
-   
+                
     
     </div>
     <br></br>

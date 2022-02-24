@@ -1,28 +1,42 @@
-import React, {useState, useEffect } from "react";
+import React, {useState, useEffect,useRef } from "react";
 import {useParams } from "react-router-dom"
 import dummy from './datag'
+import App from './App.css'
+import TimeLineComp from "./timeline";
+import ScrollToTopOnMount from "./Scrolltotop";
 
-export default function CardDetail( { match}){
+export default function CardDetail( { match }){
+  
     const { cardID} = useParams();
-    const cardNum = {cardID}
+    const cardNum = {cardID};
+   
+
  
+    
    
   
     
 
     return(
-        <div>
+        <div className='scroll-container'>
+           <ScrollToTopOnMount/>
            
-           <h3>{cardID}번 카드 입니다.</h3>
-        {dummy.cards[cardID -1 ].kor}
-        {dummy.cards[cardID -1 ].eng}
-        {dummy.cards[cardID -1 ].intro}
-        
-        </div>
+           <div className="CardimgBox">
+           
+           </div>
+
+           
+
+        <p className="dummycardName"> {dummy.cards[cardID -1 ].kor}/{dummy.cards[cardID -1 ].eng}</p>   
+       
+
+      <div className="mannam"><p className="mannamt"> &nbsp;&nbsp; &nbsp; &nbsp;  {dummy.cards[cardID -1 ].kor}님과의 만남</p></div>  
+      <br/>
+      <br/>
+        <TimeLineComp/>
+
+      </div>
 
 
     )
-
-};
-
-         
+    };
