@@ -9,13 +9,13 @@ export default function MyWallet(){
            <p className="HeroMessage">
                Archive 
                <br/>
-               My People
+               My Network
                <br/>
                In my Pocket
            </p>
             <div className="myCard"/> 
             <p className="MiniMessage">
-                we connect assholes together to be
+                we connect people together to complete each other
 
             </p>
         </div>
